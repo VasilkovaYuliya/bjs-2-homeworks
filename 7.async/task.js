@@ -21,12 +21,15 @@ class AlarmClock {
   }
 
   removeClock(time) {
-    if(this.alarmCollection.filter(alarm => alarm.time !== time)) {
-    }
+    this.removeClock = this.alarmCollection.filter(alarm => alarm.time !== time);
+    this.alarmCollection = this.removeClock;
   }
 
   getCurrentFormattedTime() {
-    return new Date().toLocaleTimeString([], {hours: "2 - digits", minutes: "2 - digits"});
+    return new Date().toLocaleTimeString("ru-Ru", {
+      hour: "2-digit",
+      minute: "2-digit",
+      });
   }
 
   start() {
@@ -52,7 +55,7 @@ class AlarmClock {
   }
 
   clearAlarms() {
-    stop();  
+    this.stop();  
     this.alarmCollection = [];
   }
 }
